@@ -1,7 +1,7 @@
-
+import { LonLatToLoc } from "./LonLatToLoc";
 export const Kahun = () => {
 
-    async function fetchData(citycode) {
+    async function fetchData() {
         let date = new Date();
         // UTCに合わせるために-9,mapSp[0]に['citycode', 'date', 'pollen']が入っているので+1して合わせる
         let todayHour = date.getHours() - 9 + 1;
@@ -12,7 +12,9 @@ export const Kahun = () => {
         const yestDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1);
         const today = `${date.getFullYear()}${("0" + (date.getMonth() + 1)).slice(-2)}${("0" + date.getDate()).slice(-2)}`;
         try {
-            const res = await fetch(`https://wxtech.weathernews.com/opendata/v1/pollen?citycode=${citycode}&start=${today}&end=${today}`, { method: "GET" });
+            const citycode = localStorage.getItem("citycode");
+            console.log(citycode);
+            const res =  await fetch(`https://wxtech.weathernews.com/opendata/v1/pollen?citycode=${citycode}&start=${today}&end=${today}`, { method: "GET" });
             const csvData = await res.text(); // CSV形式のデータをテキストとして取得
             //１行１行を配列にする
             const dataSp = csvData.split('\n');
@@ -27,6 +29,6 @@ export const Kahun = () => {
         }
     }
 
-    return <button onClick={() => fetchData(23219)}>aaaa</button>;
+    return <button onClick={() => fetchData()}>場所？</button>;
 
 }
