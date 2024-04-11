@@ -1,6 +1,6 @@
 import { LonLatToLoc } from "./LonLatToLoc";
 export const Kahun = () => {
-
+    
     async function fetchData() {
         let date = new Date();
         // UTCに合わせるために-9,mapSp[0]に['citycode', 'date', 'pollen']が入っているので+1して合わせる
@@ -28,7 +28,8 @@ export const Kahun = () => {
             console.error('Error fetching data:', error);
         }
     }
-
+    localStorage.clear("citycode");
     return <button onClick={() => fetchData()}>場所？</button>;
+    
 
 }

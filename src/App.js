@@ -3,7 +3,6 @@ import { Kahun } from "./components/Kahun";
 import { WitchCode } from "./components/WhichCode";
 function App() {
   LonLatToLoc();
-
   return (
     <div className="App">
       <header className="App-header">

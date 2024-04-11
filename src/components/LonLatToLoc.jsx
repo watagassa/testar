@@ -8,7 +8,6 @@ export const LonLatToLoc = () => {
     }, [citycode]);
     useEffect(() => {
         async function fetchData() {
-
             //navigator.geolocation.getCurrentPosition(resolve, reject);をawaitで使うためのpromise
             let position = await new Promise((resolve, reject) => {
                 navigator.geolocation.getCurrentPosition(resolve, reject);
